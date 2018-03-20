@@ -174,7 +174,10 @@ class DraftEditor extends React.Component<DraftEditorProps, State> {
     return e => {
       if (!this.props.readOnly) {
         const method = this._handler && this._handler[eventName];
-        method && method(this, e);
+        if ( method && !e.nativeEvent.__editorHandled){
+          method(this, e);
+          e.nativeEvent.__editorHandled = true;
+        }
       }
     };
   }
