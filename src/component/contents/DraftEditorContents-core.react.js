@@ -114,11 +114,13 @@ class DraftEditorContents extends React.Component<Props> {
     const nextContent = nextEditorState.getCurrentContent();
     const prevDecorator = prevEditorState.getDecorator();
     const nextDecorator = nextEditorState.getDecorator();
+
     return (
       wasComposing !== nowComposing ||
       prevContent !== nextContent ||
       prevDecorator !== nextDecorator ||
-      nextEditorState.mustForceSelection()
+      nextEditorState.mustForceSelection() ||
+      prevEditorState.getSelection() !== nextEditorState.getSelection()
     );
   }
 
