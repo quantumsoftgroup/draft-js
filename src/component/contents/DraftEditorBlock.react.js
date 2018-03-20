@@ -223,9 +223,9 @@ class DraftEditorBlock extends React.Component<Props> {
     });
 
     return (
-      <div data-offset-key={offsetKey} className={className}>
+      <span data-offset-key={offsetKey} className={className}>
         {this._renderChildren()}
-      </div>
+      </span>
     );
   }
 }
