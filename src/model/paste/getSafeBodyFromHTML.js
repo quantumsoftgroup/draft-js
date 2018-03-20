@@ -36,6 +36,19 @@ function getSafeBodyFromHTML(html: string): ?Element {
     invariant(doc.documentElement, 'Missing doc.documentElement');
     doc.documentElement.innerHTML = html;
     root = doc.getElementsByTagName('body')[0];
+    if (root.childNodes.length > 4) {
+      var sf = root.childNodes[1];
+      var ef = root.childNodes[root.childNodes.length - 2];
+      if (sf.nodeType == Node.COMMENT_NODE && ef.nodeType == Node.COMMENT_NODE && sf.nodeValue == "StartFragment" && ef.nodeValue=="EndFragment") {
+          // remove first two nodes and last two nodes
+          var st = root.childNodes[0];
+          var et = root.childNodes[root.childNodes.length - 1];
+          st.remove();
+          sf.remove();
+          ef.remove();
+          et.remove();
+      }
+    }
   }
   return root;
 }
