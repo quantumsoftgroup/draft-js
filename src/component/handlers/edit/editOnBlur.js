@@ -41,6 +41,8 @@ function editOnBlur(editor: DraftEditor, e: SyntheticEvent<>): void {
     }
   }
 
+  editor.props.onBlur && editor.props.onBlur(e);
+
   var editorState = editor._latestEditorState;
   var currentSelection = editorState.getSelection();
   if (!currentSelection.getHasFocus()) {
@@ -48,7 +50,6 @@ function editOnBlur(editor: DraftEditor, e: SyntheticEvent<>): void {
   }
 
   var selection = currentSelection.set('hasFocus', false);
-  editor.props.onBlur && editor.props.onBlur(e);
   editor.update(EditorState.acceptSelection(editorState, selection));
 }
 
