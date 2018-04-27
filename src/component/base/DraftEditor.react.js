@@ -229,6 +229,7 @@ class DraftEditor extends React.Component<DraftEditorProps, State> {
       // fix parent-draggable Safari bug. #1326
       userSelect: 'text',
       WebkitUserSelect: 'text',
+      MozUserSelect:'-moz-text',
       whiteSpace: 'pre-wrap',
       wordWrap: 'break-word',
     };
