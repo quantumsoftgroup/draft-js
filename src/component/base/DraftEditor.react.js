@@ -254,9 +254,9 @@ class DraftEditor extends React.Component<DraftEditorProps, State> {
       key: 'contents' + this.state.contentsKey,
       textDirectionality,
     };
-
+      let rootTag = {'data-draft-editor-root': "true"}
     return (
-      <div className={rootClass}>
+        <div className={rootClass} {...rootTag}>
         {this._renderPlaceholder()}
         <div
           className={cx('DraftEditor/editorContainer')}

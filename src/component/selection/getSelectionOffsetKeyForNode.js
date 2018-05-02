@@ -18,7 +18,10 @@
  * found on the DOM tree of given node.
  */
 function getSelectionOffsetKeyForNode(node: Node): ?string {
-  if (node instanceof Element) {
+    if (node instanceof Element) {
+    if (node.getAttribute('data-draft-editor-root'))
+      return null;
+
     var offsetKey = node.getAttribute('data-offset-key');
     if (offsetKey) {
       return offsetKey;
