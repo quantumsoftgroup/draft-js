@@ -604,7 +604,10 @@ function getInlineStyleForCollapsedSelection(
   var startKey = selection.getStartKey();
   var startOffset = selection.getStartOffset();
   var startBlock = content.getBlockForKey(startKey);
-
+    if (!startBlock) {
+        //console.warn("Could not find block for [" + startKey + "] key");
+        return lookUpwardForInlineStyle(content, startKey);
+    }
   // If the cursor is not at the start of the block, look backward to
   // preserve the style of the preceding character.
   if (startOffset > 0) {
